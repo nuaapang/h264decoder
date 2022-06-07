@@ -6,7 +6,7 @@ import (
 	"github.com/ailumiyana/goav-incr/goav/avcodec"
 	"github.com/ailumiyana/goav-incr/goav/avutil"
 	"github.com/ailumiyana/goav-incr/goav/swscale"
-	"github.com/mike1808/h264decoder/rgb"
+	"github.com/nuaapang/h264decoder/rgb"
 	"image"
 	"unsafe"
 )
@@ -76,6 +76,7 @@ func New(pxlFmt PixelFormat) (*H264Decoder, error) {
 	default:
 		return nil, errors.New("unsupported pixel format")
 	}
+	converterPxlFmt = 8 // gray
 
 	converter, err := newConverter(converterPxlFmt)
 	if err != nil {
